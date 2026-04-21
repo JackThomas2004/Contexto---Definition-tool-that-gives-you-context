@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+    "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+
+    <!-- Bundle identity -->
+    <key>CFBundleExecutable</key>
+    <string>Contexto</string>
+
+    <key>CFBundleIdentifier</key>
+    <string>com.contexto.app</string>
+
+    <key>CFBundleName</key>
+    <string>Contexto</string>
+
+    <key>CFBundleDisplayName</key>
+    <string>Contexto</string>
+
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+
+    <key>CFBundleShortVersionString</key>
+    <string>1.0</string>
+
+    <key>CFBundleVersion</key>
+    <string>1</string>
+
+    <!-- Minimum macOS version -->
+    <key>LSMinimumSystemVersion</key>
+    <string>12.0</string>
+
+    <!-- Hide from Dock — menu-bar-only app -->
+    <key>LSUIElement</key>
+    <true/>
+
+    <!-- Principal class (required for non-SwiftUI entry point) -->
+    <key>NSPrincipalClass</key>
+    <string>NSApplication</string>
+
+    <!-- App icon -->
+    <key>CFBundleIconFile</key>
+    <string>AppIcon</string>
+
+    <!-- macOS Services registration
+         This makes "Define with Contexto" appear in the right-click → Services menu
+         whenever the user has text selected.
+    -->
+    <key>NSServices</key>
+    <array>
+        <dict>
+            <!-- The label shown in the Services sub-menu -->
+            <key>NSMenuItem</key>
+            <dict>
+                <key>default</key>
+                <string>Define with Contexto</string>
+            </dict>
+
+            <!-- Selector name on NSApp.servicesProvider (without parameters) -->
+            <key>NSMessage</key>
+            <string>handleDefineWithContexto</string>
+
+            <!-- Must match CFBundleName -->
+            <key>NSPortName</key>
+            <string>Contexto</string>
+
+            <!-- The pasteboard types this service accepts -->
+            <key>NSSendTypes</key>
+            <array>
+                <string>NSStringPboardType</string>
+                <string>public.plain-text</string>
+                <string>public.utf8-plain-text</string>
+            </array>
+        </dict>
+    </array>
+
+    <!-- Privacy descriptions (shown if user is prompted for access) -->
+    <key>NSAppleEventsUsageDescription</key>
+    <string>Contexto reads your active browser tab's URL and title to give you context-aware definitions.</string>
+
+    <key>NSAccessibilityUsageDescription</key>
+    <string>Contexto reads the text around your selection to give you context-aware definitions in Preview, Word, and other apps.</string>
+
+</dict>
+</plist>
